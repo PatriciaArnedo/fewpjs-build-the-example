@@ -13,7 +13,7 @@ function toggleModal() {
 }
 
 
-function fakeFetch(event) {
+function liker(event) {
   const heart = event.target
   mimicServerCall("bogusUrl")
     .then(response => {
@@ -33,7 +33,7 @@ function fakeFetch(event) {
 }
 
 for(heart of heartsList) {
-  heart.addEventListener("click", fakeFetch)
+  heart.addEventListener("click", liker)
 }
 
 
