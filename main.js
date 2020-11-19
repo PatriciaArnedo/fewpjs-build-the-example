@@ -4,6 +4,35 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const modal = document.querySelector("#modal")
+const heartsList = document.querySelectorAll(".like")
+
+function toggleModal() {
+  modal.classList.toggle("hidden")
+}
+
+
+function fakeFetch(event) {
+  const heart = event.target
+  mimicServerCall("bogusUrl")
+    .then(response => {
+      if (heart.textContent == EMPTY_HEART){
+        heart.textContent = FULL_HEART
+        heart.className = "activated-heart"
+      } else if (heart.textContent == FULL_HEART){
+        heart.textContent = EMPTY_HEART
+        heart.classList.toggle("activated-heart")
+      }
+    })
+    .catch(error => {
+      toggleModal()
+      setTimeout(toggleModal,2000)
+    })
+}
+
+for(heart of heartsList) {
+  heart.addEventListener("click", fakeFetch)
+}
 
 
 
