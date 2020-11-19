@@ -5,6 +5,7 @@ const FULL_HEART = '♥'
 // Your JavaScript code goes here!
 
 const modal = document.querySelector("#modal")
+const modalMessage = document.querySelector("#modal-message")
 const heartsList = document.querySelectorAll(".like")
 
 function toggleModal() {
@@ -26,6 +27,7 @@ function fakeFetch(event) {
     })
     .catch(error => {
       toggleModal()
+      modalMessage.textContent = error
       setTimeout(toggleModal,2000)
     })
 }
